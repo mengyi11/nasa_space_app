@@ -50,6 +50,35 @@ export default function MyProfile() {
         message: "",
         type: "success", // success/error/info
     });
+    useEffect(() => {
+        const button = document.createElement("button");
+        button.innerText = "🔊 Read Page";
+        button.style.position = "fixed";
+        button.style.top = "10px";
+        button.style.right = "10px";
+        button.style.zIndex = "9999";
+        button.style.padding = "8px 12px";
+        button.style.background = "#333";
+        button.style.color = "#fff";
+        button.style.border = "none";
+        button.style.borderRadius = "4px";
+        button.style.cursor = "pointer";
+    
+        const speakPage = () => {
+          window.speechSynthesis.cancel();
+          const text = document.body.innerText;
+          const utterance = new SpeechSynthesisUtterance(text);
+          utterance.lang = "en-US";
+          window.speechSynthesis.speak(utterance);
+        };
+    
+        button.onclick = speakPage;
+        document.body.appendChild(button);
+    
+        return () => {
+          button.remove();
+        };
+      }, []);
 
     const [isFormDirty, setIsFormDirty] = useState(false);
 

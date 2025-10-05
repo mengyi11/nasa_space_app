@@ -1,6 +1,5 @@
 "use client";
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
     Typography,
     Box,
@@ -115,6 +114,7 @@ const historyData = [
     },
 ];
 
+
 const pollutantConfig = {
     PM25: {
         name: "PM2.5",
@@ -202,7 +202,35 @@ function History() {
     const [selectedPollutant, setSelectedPollutant] = useState("PM25");
     const [timeRange, setTimeRange] = useState("7days");
     const [tabValue, setTabValue] = useState(0);
+    useEffect(() => {
+        const button = document.createElement("button");
+        button.innerText = "🔊 Read Page";
+        button.style.position = "fixed";
+        button.style.top = "10px";
+        button.style.right = "10px";
+        button.style.zIndex = "9999";
+        button.style.padding = "8px 12px";
+        button.style.background = "#333";
+        button.style.color = "#fff";
+        button.style.border = "none";
+        button.style.borderRadius = "4px";
+        button.style.cursor = "pointer";
 
+        const speakPage = () => {
+            window.speechSynthesis.cancel();
+            const text = document.body.innerText;
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = "en-US";
+            window.speechSynthesis.speak(utterance);
+        };
+
+        button.onclick = speakPage;
+        document.body.appendChild(button);
+
+        return () => {
+            button.remove();
+        };
+    }, []);
     const handlePollutantChange = (event) => {
         setSelectedPollutant(event.target.value);
     };

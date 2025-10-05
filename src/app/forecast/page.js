@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Typography, Box, Card, CardContent, Grid, Paper,
   Chip, useTheme, Divider, Container
@@ -10,7 +10,7 @@ import {
   ResponsiveContainer, ReferenceLine
 } from "recharts";
 import { WarningAmber, CheckCircle, Info } from "@mui/icons-material";
-import SideNavBar from "@/components/SideNavBar"; 
+import SideNavBar from "@/components/SideNavBar";
 
 
 const forecastData = [
@@ -25,12 +25,11 @@ const forecastData = [
 
 // AQI color
 const getAqiColor = (aqi) => {
-  if (aqi <= 50) return "#4caf50"; 
-  if (aqi <= 100) return "#ffc107"; 
-  if (aqi <= 150) return "#ff9800"; 
-  return "#f44336"; 
+  if (aqi <= 50) return "#4caf50";
+  if (aqi <= 100) return "#ffc107";
+  if (aqi <= 150) return "#ff9800";
+  return "#f44336";
 };
-
 
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
@@ -61,6 +60,35 @@ const CustomTooltip = ({ active, payload }) => {
 
 function Forecast() {
   const theme = useTheme();
+  useEffect(() => {
+  const button = document.createElement("button");
+  button.innerText = "🔊 Read Page";
+  button.style.position = "fixed";
+  button.style.top = "10px";
+  button.style.right = "10px";
+  button.style.zIndex = "9999";
+  button.style.padding = "8px 12px";
+  button.style.background = "#333";
+  button.style.color = "#fff";
+  button.style.border = "none";
+  button.style.borderRadius = "4px";
+  button.style.cursor = "pointer";
+
+  const speakPage = () => {
+    window.speechSynthesis.cancel();
+    const text = document.body.innerText;
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "en-US";
+    window.speechSynthesis.speak(utterance);
+  };
+
+  button.onclick = speakPage;
+  document.body.appendChild(button);
+
+  return () => {
+    button.remove();
+  };
+}, []);
 
   return (
     <Box sx={{ display: "flex", minHeight: "100vh", backgroundColor: theme.palette.grey[50] }}>
