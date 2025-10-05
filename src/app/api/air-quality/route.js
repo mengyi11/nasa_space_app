@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import axios from 'axios';
 
 // 1. Base Configuration
-const WAQI_API_TOKEN = "aa4922ba6bcff090d06938447c5a5d5c2c407915";
+const WAQI_API_TOKEN = process.env.WAQI_API_TOKEN;
 const SINGAPORE_LAT = 1.3521;
 const SINGAPORE_LNG = 103.8198;
 
