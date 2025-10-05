@@ -73,7 +73,7 @@ export default function LoginPage() {
       <Box sx={{ mb: 4, textAlign: "center" }}>
         <AirIcon sx={{ fontSize: 48, color: theme => theme.palette.primary.main, mb: 2 }} />
         <Typography variant="h5" fontWeight="bold" color="text.primary">
-          AirQuality App
+          JustBreathe
         </Typography>
       </Box>
 
