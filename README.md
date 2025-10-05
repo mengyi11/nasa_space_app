@@ -4,6 +4,11 @@
 The Air Quality Monitoring Application is a user-centric, responsive web tool designed to provide real-time air quality data, personalized health recommendations, and 7-day forecasts. Built with React and Material-UI, the app delivers actionable insights tailored to individual user profiles (e.g., general population, sensitive groups like asthma patients) while maintaining a clean, intuitive interface.
 
 
+## Live Demo & Deployment
+- **Hugging Face Space**: Try the live interactive demo of the app → [Air Quality Monitor (Hugging Face)](https://huggingface.co/spaces/your-username/air-quality-monitoring-app)  
+  *Note: The Hugging Face Space hosts a lightweight version of the app for quick testing (supports core features like forecast visualization and personalized recommendations). For full functionality (e.g., SMS notifications), deploy the app locally or to your preferred cloud platform.*
+
+
 ## Key Features
 The application includes four core modules, each focused on delivering specific value to users:
 
@@ -58,6 +63,7 @@ Provides consistent, accessible navigation across all app modules.
 | State Management    | React Hooks (useState, useEffect, useCallback)                                    |
 | API Integration     | Fetch API (for real-time data from backend/air quality services)                  |
 | Notifications       | Backend SMS service integration (triggers for critical alerts)                    |
+| Deployment (Demo)   | Hugging Face Spaces (for live interactive demo)                                   |
 
 
 ## Installation & Setup
@@ -116,6 +122,7 @@ The app will be available at `http://localhost:3000`.
 2. **View Dashboard**: Check personalized health recommendations based on current air quality.  
 3. **Manage Alerts**: Enable SMS notifications for critical alerts and filter alerts by severity.  
 4. **Plan with Forecast**: Use the 7-day forecast to schedule outdoor activities (e.g., avoid days with "Unhealthy" AQI).  
+5. **Try Live Demo**: Test core features without installation via the [Hugging Face Space](https://huggingface.co/spaces/your-username/air-quality-monitoring-app).  
 
 
 ### For Developers
@@ -123,6 +130,7 @@ The app will be available at `http://localhost:3000`.
 - **Update AQI Thresholds**: Modify the `getAqiConfig` function in the Forecast module to adjust status ranges (e.g., change "Moderate" to 51-110).  
 - **Add Pollutant Data**: Extend the `pollutantConfig` in the Forecast module to include additional pollutants (e.g., NO2, SO2) and update the chart to display multiple lines.  
 - **Adjust Refresh Intervals**: Modify the `setInterval` duration in the Alerts/Forecast modules to change how often data updates (e.g., 10 minutes for alerts).  
+- **Deploy to Hugging Face**: Follow [Hugging Face’s React deployment guide](https://huggingface.co/docs/spaces/quickstart) to host your own demo (use the `app.py` wrapper for React apps if needed).
 
 #### API Requirements
 The backend must return data in the following formats for each module:
@@ -139,11 +147,12 @@ The backend must return data in the following formats for each module:
 
 
 ## Known Limitations & Future Improvements
-- **Limitation**: SMS notifications require a backend service (e.g., Twilio, Plivo) and user phone number verification.  
+- **Limitation**: SMS notifications require a backend service (e.g., Twilio, Plivo) and user phone number verification (not supported in the Hugging Face demo).  
 - **Future Improvements**:  
   - Add location-based air quality (allow users to select multiple locations).  
   - Integrate weather data (e.g., rain, wind) to explain AQI changes.  
   - Add a "Activity Planner" tool (lets users input an activity and get a recommendation based on forecast).  
+  - Enhance Hugging Face demo with mock user profiles (for personalized recommendation testing).  
 
 
 ## Appendix
@@ -206,8 +215,6 @@ The backend must return data in the following formats for each module:
   { "aqiValue": 60 }
 ]
 ```
-
-
 
 
 ## License
