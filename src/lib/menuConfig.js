@@ -43,14 +43,19 @@ const menuConfig = {
       path: "/alerts",
     },
     {
-      title: "About",
-      icon: "InfoIcon",
-      path: "/about",
+      title: "Profile",
+      icon: "PersonIcon",
+      path: "/profile",
     },
     {
       title: "Logout",
       icon: "LogoutIcon",
       path: "/logout",
+    },
+    {
+      title: "About",
+      icon: "InfoIcon",
+      path: "/about",
     },
   ],
 };

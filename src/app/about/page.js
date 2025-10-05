@@ -30,7 +30,7 @@ import PublicIcon from '@mui/icons-material/Public';
 import PeopleIcon from '@mui/icons-material/People';
 import SideNavBar from "@/components/SideNavBar";
 
-// 团队成员数据
+
 const teamMembers = [
     {
         id: 1,

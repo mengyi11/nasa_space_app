@@ -4,7 +4,7 @@ import pool from '../../../lib/db';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
-const SECRET = process.env.JWT_SECRET || "super-secret-key"; 
+const SECRET = process.env.JWT_SECRET || "super-secret-key";
 
 export async function POST(req) {
   try {
@@ -16,22 +16,56 @@ export async function POST(req) {
     }
 
     if (action === 'register') {
+      console.log("data--------------------");
+      console.log(body);
+      const {
+        phone,
+        birthYear,
+        password,
+        city = "",
+        state = "",
+        country = "",
+        pregnancy_status = false,
+        has_asthma = false,
+        has_bronchitis = false,
+        has_copd = false,
+      } = body;
+
+      // 简单必填验证
       if (!phone || !birthYear || !password) {
-        return NextResponse.json({ error: 'All fields are required' }, { status: 400 });
+        return NextResponse.json({ error: "Phone, birthYear, and password are required" }, { status: 400 });
       }
 
-      const [existing] = await pool.query('SELECT * FROM users WHERE phone = ?', [phone]);
+      // 检查手机号是否已注册
+      const [existing] = await pool.query("SELECT * FROM user WHERE phone = ?", [phone]);
       if (existing.length > 0) {
-        return NextResponse.json({ error: 'Phone already registered' }, { status: 400 });
+        return NextResponse.json({ error: "Phone already registered" }, { status: 400 });
       }
 
+      // 密码加密
       const hashedPassword = await bcrypt.hash(password, 10);
+
+      // 插入新用户
       await pool.query(
-        'INSERT INTO users (phone, birthYear, password) VALUES (?, ?, ?)',
-        [phone, birthYear, hashedPassword]
+        `INSERT INTO user 
+      (phone, birth_year, password, city, state, country, pregnancy_status, has_asthma, has_bronchitis, has_copd)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        [
+          phone,
+          birthYear,
+          hashedPassword,
+          city,
+          state,
+          country,
+          pregnancy_status ? 1 : 0,
+          has_asthma ? 1 : 0,
+          has_bronchitis ? 1 : 0,
+          has_copd ? 1 : 0,
+        ]
       );
 
-      return NextResponse.json({ message: 'Registration successful' });
+      return NextResponse.json({ message: "Registration successful" });
+
     }
 
     if (action === 'login') {
@@ -39,7 +73,7 @@ export async function POST(req) {
         return NextResponse.json({ error: 'Phone and password required' }, { status: 400 });
       }
 
-      const [users] = await pool.query('SELECT * FROM users WHERE phone = ?', [phone]);
+      const [users] = await pool.query('SELECT * FROM user WHERE phone = ?', [phone]);
       if (users.length === 0) {
         return NextResponse.json({ error: 'User not found' }, { status: 401 });
       }
@@ -53,7 +87,7 @@ export async function POST(req) {
       const token = jwt.sign(
         { id: user.id, phone: user.phone },
         SECRET,
-        { expiresIn: "2h" } 
+        { expiresIn: "2h" }
       );
 
       const { password: pw, ...userData } = user;

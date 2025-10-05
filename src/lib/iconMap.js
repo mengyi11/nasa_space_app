@@ -12,6 +12,7 @@ import HistoryIcon from "@mui/icons-material/History";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import InfoIcon from "@mui/icons-material/Info";
 import LogoutIcon from "@mui/icons-material/Logout";
+import PersonIcon from '@mui/icons-material/Person';
 
 // 图标映射表：键名需与 menuConfig 中的 icon 字段一致
 const iconMap = {
@@ -24,6 +25,7 @@ const iconMap = {
   StorageIcon,
   HistoryIcon,
   NotificationsIcon,
+  PersonIcon,
   InfoIcon,
   LogoutIcon,
 };
