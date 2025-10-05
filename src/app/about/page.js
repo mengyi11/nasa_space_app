@@ -29,78 +29,109 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import PublicIcon from '@mui/icons-material/Public';
 import PeopleIcon from '@mui/icons-material/People';
 import SideNavBar from "@/components/SideNavBar";
+import PersonPinCircleIcon from '@mui/icons-material/PersonPinCircle';
+import ViewWeekIcon from '@mui/icons-material/ViewWeek';
+import DevicesIcon from '@mui/icons-material/Devices';
+import AutorenewIcon from '@mui/icons-material/Autorenew';
+import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew';
+import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';
 
 
 const teamMembers = [
     {
         id: 1,
-        name: "xxxxx",
-        role: "Frontend Developer",
-        avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=alex",
-        skills: ["React", "MUI", "PWA"],
+        name: "Mengyi Xu",
+        role: "Fullstack Web Developer",
+        avatar: "https://api.dicebear.com/9.x/thumbs/svg?seed=Aneka",
+        skills: ["Next.js", "User Database", "API integration"],
     },
     {
         id: 2,
-        name: "xxxxx",
-        role: "Data Scientist",
-        avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=sam",
-        skills: ["Data Visualization", "TEMPO API", "Forecasting"],
+        name: "Sridevi Sridhar",
+        role: "Software Developer",
+        avatar: "https://api.dicebear.com/9.x/thumbs/svg?seed=Avery",
+        skills: ["Web Development", "API & Cloud Integration", "Accessibility"],
     },
     {
         id: 3,
-        name: "xxxxx",
-        role: "UX Designer",
-        avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=jamie",
-        skills: ["UI/UX", "Responsive Design", "Accessibility"],
+        name: "Suresh Sangamithrai",
+        role: "Video & Research",
+        avatar: "https://api.dicebear.com/9.x/thumbs/svg?seed=Destiny",
+        skills: ["Health Impact Research", "Video Editor"],
     },
     {
         id: 4,
-        name: "xxxxx",
-        role: "Developer",
-        avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=taylor",
-        skills: ["API Integration", "Database", "Cloud Deployment"],
+        name: "Zhang Aijia",
+        role: "Research & Content",
+        avatar: "https://api.dicebear.com/9.x/thumbs/svg?seed=Jessica",
+        skills: ["Recommendation Logic", "Health Data Research"],
     },
      {
         id: 5,
-        name: "xxxxx",
-        role: "Backend Developer",
-        avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=taylor",
-        skills: ["API Integration", "Database", "Cloud Deployment"],
+        name: "Huang Yihua",
+        role: "Data & API Scout",
+        avatar: "https://api.dicebear.com/9.x/thumbs/svg?seed=Robert",
+        skills: ["Research", "API & Data"],
     },
 ];
 
-// 核心功能数据
+
 const coreFeatures = [
     {
         id: 1,
-        title: "Real-Time TEMPO Data",
-        description: "Integrates satellite data from NASA's TEMPO mission for hyperlocal air quality monitoring.",
-        icon: <Satellite color="primary" />,
+        title: "Hyper-Personalized Content",
+        description: "Delivers air quality advice tailored to each user’s profile, health conditions, and contextual risks.",
+        icon: <PersonPinCircleIcon color="primary" />,
     },
     {
         id: 2,
-        title: "Ground-Level Validation",
-        description: "Combines satellite data with ground-based sensor measurements for higher accuracy.",
-        icon: <Cloud color="secondary" />,
+        title: "Intuitive Information Architecture",
+        description: "Organizes guidance into clear, color-coded ‘Can Do’, ‘Limit’, and ‘Avoid’ categories for instant clarity.",
+        icon: <ViewWeekIcon color="secondary" />,
     },
     {
         id: 3,
-        title: "Predictive Forecasting",
-        description: "Uses machine learning to forecast air quality up to 3 days in advance.",
-        icon: <ErrorIcon color="warning" />,
+        title: "Responsive & Adaptive Design",
+        description: "Optimizes layouts across devices with AQI-synced visuals for consistent, accessible user experiences.",
+        icon: <DevicesIcon color="warning" />,
     },
     {
         id: 4,
-        title: "Accessibility Focused",
-        description: "Designed with WCAG 2.1 standards to ensure usability for all users.",
-        icon: <PeopleIcon color="info" />,
+        title: "Live Data Intelligence",
+        description: "Leverages real-time AQI updates every 5 minutes with transparent timestamps for up-to-date accuracy.",
+        icon: <AutorenewIcon color="info" />,
+    },
+    {
+        id: 5,
+        title: "Accessible for Everyone",
+        description: "Built with inclusive design, intuitive UI, and text-to-speech support to ensure usability for all users.",
+        icon: <AccessibilityNewIcon color="success" />,
+    },
+    {
+        id: 6,
+        title: "Actionable, User-Focused Value",
+        description: "Transforms raw AQI data into practical guidance that saves time and reduces health anxiety.",
+        icon: <HealthAndSafetyIcon color="error" />,
     },
 ];
 
 const techStack = [
-    { category: "Frontend", items: ["React.js", "Material-UI", "Recharts", "React Router"] },
-    { category: "Data", items: ["TEMPO API", "OpenAQ API", "Chart.js", "ML Forecasting"] },
-    { category: "Deployment", items: ["PWA", "Vercel", "GitHub Pages", "Cloudflare"] },
+    { 
+        category: "Frontend", 
+        items: ["Next.js", "Material-UI", "Recharts", "Leaflet", "Toastify", "PWA"] 
+    },
+    { 
+        category: "Backend", 
+        items: ["FastAPI", "Python", "MySQL", "REST API", "dotenv"] 
+    },
+    { 
+        category: "Data, ML & APIs", 
+        items: ["AirNow API", "NASA TEMPO API", "OpenStreetMap Nominatim", "OpenAQ API"] 
+    },
+    { 
+        category: "ML & Deployment", 
+        items: ["GitHub Actions", "Hugging Face ML Endpoint"] 
+    },
 ];
 
 function About() {
