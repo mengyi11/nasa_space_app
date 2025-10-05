@@ -33,11 +33,6 @@ const menuConfig = {
       path: "/forecast",
     },
     {
-      title: "History",
-      icon: "HistoryIcon",
-      path: "/history",
-    },
-    {
       title: "Alerts",
       icon: "NotificationsIcon",
       path: "/alerts",
